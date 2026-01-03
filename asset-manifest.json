@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/Expense_Tracker/static/css/main.523c940b.css",
+    "main.css": "/Expense_Tracker/static/css/main.018f50af.css",
     "main.js": "/Expense_Tracker/static/js/main.674ff385.js",
     "static/media/Timeless Narration Demo.ttf": "/Expense_Tracker/static/media/Timeless Narration Demo.2099b99fbc23e0c08e88.ttf",
     "index.html": "/Expense_Tracker/index.html",
-    "main.523c940b.css.map": "/Expense_Tracker/static/css/main.523c940b.css.map",
+    "main.018f50af.css.map": "/Expense_Tracker/static/css/main.018f50af.css.map",
     "main.674ff385.js.map": "/Expense_Tracker/static/js/main.674ff385.js.map"
   },
   "entrypoints": [
-    "static/css/main.523c940b.css",
+    "static/css/main.018f50af.css",
     "static/js/main.674ff385.js"
   ]
 }
