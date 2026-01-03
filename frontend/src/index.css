@@ -3,7 +3,9 @@
   src: url('./fonts/Timeless Narration Demo.ttf') format('truetype');
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -13,7 +15,7 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* ================= DOT-TO-DOT CANVAS ================= */
+/* ================= BACKGROUND ================= */
 .bg-canvas {
   position: fixed;
   inset: 0;
@@ -31,15 +33,15 @@ body {
   padding: 40px;
 }
 
-/* ================= HEADER (PIXEL-PERFECT CENTER) ================= */
+/* ================= HEADER ================= */
 .hud-header {
   position: relative;
-  margin-bottom: 40px;
-  height: 120px;                 /* reserve space to prevent jump */
+  height: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 40px;
 }
 
 .hud-header h1 {
@@ -49,14 +51,13 @@ body {
   font-family: 'TimelessNarration', serif;
   font-size: 76px;
   letter-spacing: 7px;
-  text-align: center;
   white-space: nowrap;
+  text-align: center;
   text-shadow:
     0 0 6px rgba(0,250,255,0.45),
     0 0 16px rgba(0,250,255,0.25);
 }
 
-/* AGGRESSIVE OVERLAY */
 .hud-header h1::before {
   content: attr(data-text);
   position: absolute;
@@ -73,7 +74,7 @@ body {
 }
 
 .hud-header span {
-  margin-top: 88px;              /* aligns subtitle visually */
+  margin-top: 88px;
   font-size: 12px;
   letter-spacing: 4px;
   opacity: 0.6;
@@ -82,7 +83,7 @@ body {
 /* ================= GRID ================= */
 .grid {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 28px;
 }
 
@@ -95,68 +96,76 @@ body {
 }
 
 /* ================= INPUTS ================= */
-input, select {
+input,
+select {
   width: 100%;
   margin: 6px 0;
-  padding: 6px;
-  background:#000;
-  border:1px solid #00faff;
-  color:#00faff;
+  padding: 8px;
+  background: #000;
+  border: 1px solid #00faff;
+  color: #00faff;
+  font-size: 14px;
 }
 
 /* ================= BUTTONS ================= */
 button {
   margin-top: 10px;
-  padding: 8px 18px;
+  padding: 10px 20px;
   background: transparent;
   border: 1px solid #00faff;
-  color:#00faff;
-  cursor:pointer;
+  color: #00faff;
+  cursor: pointer;
   position: relative;
-  overflow:hidden;
+  overflow: hidden;
+  font-size: 14px;
 }
 
 button::before {
-  content:'';
-  position:absolute;
-  inset:0;
+  content: '';
+  position: absolute;
+  inset: 0;
   background: linear-gradient(to top, #00faff, #ff3355);
   transform: translateY(100%);
-  transition: transform .4s ease;
-  z-index:-1;
+  transition: transform 0.4s ease;
+  z-index: -1;
 }
 
-button:hover::before { transform: translateY(0); }
-button:hover { color:#000; }
+button:hover::before {
+  transform: translateY(0);
+}
 
-/* ================= BOOT OVERLAY ================= */
+button:hover {
+  color: #000;
+}
+
+/* ================= BOOT / ASSEMBLY ================= */
 .boot-overlay {
   position: fixed;
-  inset:0;
+  inset: 0;
   background: radial-gradient(circle,#020406,#000);
-  z-index:9999;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  pointer-events:none;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
 }
 
 .assembly-container {
   position: fixed;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  display:flex;
-  font-family:'TimelessNarration', serif;
-  font-size:72px;
-  letter-spacing:6px;
-  z-index:20;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  font-family: 'TimelessNarration', serif;
+  font-size: 72px;
+  letter-spacing: 6px;
+  z-index: 20;
 }
 
 .assembly-piece {
-  opacity:0;
+  opacity: 0;
   transform:
-    translate3d(var(--tx),var(--ty),-400px)
+    translate3d(var(--tx), var(--ty), -400px)
     rotateX(var(--rx))
     rotateY(var(--ry))
     scale(1.2);
@@ -169,20 +178,62 @@ button:hover { color:#000; }
 
 @keyframes assemble {
   to {
-    opacity:1;
-    transform:translate3d(0,0,0) rotateX(0) rotateY(0) scale(1);
+    opacity: 1;
+    transform: translate3d(0,0,0) rotateX(0) rotateY(0) scale(1);
   }
 }
 
-.boot-sub {
-  margin-top: 120px;
-  font-size: 12px;
-  letter-spacing: 4px;
-  opacity: 0;
-  animation: fadeIn 1s ease forwards;
-  animation-delay: 2.6s;
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 768px) {
+
+  .hud-root {
+    padding: 20px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hud-header {
+    height: 100px;
+    margin-bottom: 30px;
+  }
+
+  .hud-header h1 {
+    font-size: 42px;
+    letter-spacing: 4px;
+  }
+
+  .hud-header span {
+    margin-top: 60px;
+    font-size: 10px;
+    letter-spacing: 3px;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+
+  input,
+  select,
+  button {
+    font-size: 16px;
+  }
+
+  .assembly-container {
+    font-size: 48px;
+    letter-spacing: 4px;
+  }
 }
 
-@keyframes fadeIn {
-  to { opacity: .7; }
+@media (max-width: 480px) {
+
+  .hud-header h1 {
+    font-size: 36px;
+    letter-spacing: 3px;
+  }
+
+  .assembly-container {
+    font-size: 40px;
+  }
 }
